@@ -14,9 +14,11 @@ const elements = {
 };
 
 const urlBreeds = 'https://api.thecatapi.com/v1/breeds';
-const urlImg = 'https://api.thecatapi.com/v1/images/search';
+// const urlImg = 'https://api.thecatapi.com/v1/images/search';
 
 elements.breedSellect.addEventListener('change', fetchCatByBreed);
+
+elements.error.hidden = true;
 
 fetchBreeds(urlBreeds);
 // fetchCatByBreed();
