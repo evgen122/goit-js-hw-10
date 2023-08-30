@@ -1,11 +1,6 @@
 import SlimSelect from 'slim-select';
 import 'slim-select/dist/slimselect.css';
-import axios from 'axios';
 import { fetchBreeds, fetchCatByBreed } from './cat-api';
-// import { infoBreedData } from '.';
-
-axios.defaults.headers.common['x-api-key'] =
-  'live_FEvTz5K5LqJQeCheyolHOvxNrx0foxzlFWzPJKK3QQcWirMU4Zh51kVFnC8wOO9U';
 
 const elements = {
   breedSellect: document.querySelector('.breed-select'),
@@ -25,7 +20,6 @@ elements.breedSellect.addEventListener('change', showBreed);
 
 fetchBreeds(urlBreeds)
   .then(response => {
-    // console.log(response.data);
     let markup = response.data
       .map(breed => {
         return `<option value='${breed.id}'>'${breed.name}'</option>`;
@@ -38,7 +32,6 @@ fetchBreeds(urlBreeds)
   })
   .catch(error => {
     elements.error.hidden = false; // handle error
-    // .log(error);
   })
   .finally(function () {
     elements.breedSellect.hidden = false;
@@ -62,7 +55,6 @@ function showBreed(elm) {
   <p class="cat-info-temp"><b>Temperament:  </b>${response.data[0].breeds[0].temperament}</p>`;
 
       elements.catInfo.innerHTML = infoBreed;
-      // elements.catInfo.insertAdjacentHTML('beforeend', infoBreed);
     })
 
     .catch(error => {
