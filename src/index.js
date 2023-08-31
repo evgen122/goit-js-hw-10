@@ -22,7 +22,7 @@ fetchBreeds(urlBreeds)
   .then(response => {
     let markup = response.data
       .map(breed => {
-        return `<option value='${breed.id}'>'${breed.name}'</option>`;
+        return `<option value='${breed.id}'>${breed.name}</option>`;
       })
       .join('');
     elements.breedSellect.insertAdjacentHTML('beforeend', markup);
@@ -49,14 +49,12 @@ function showBreed(elm) {
       elements.loader.hidden = true;
       const infoBreed = `<img class="cat-pictures" src="${response.data[0].url}" alt="${response.data[0].id}"
       width="50%">
-  <h2 class="cat-info-breed">${response.data[0].breeds[0].name}</h2>
-  <p class="cat-info-desc">${response.data[0].breeds[0].description}</p>
-
-  <p class="cat-info-temp"><b>Temperament:  </b>${response.data[0].breeds[0].temperament}</p>`;
+      <h2 class="cat-info-breed">${response.data[0].breeds[0].name}</h2>
+      <p class="cat-info-desc">${response.data[0].breeds[0].description}</p>
+      <p class="cat-info-temp"><b>Temperament:  </b>${response.data[0].breeds[0].temperament}</p>`;
 
       elements.catInfo.innerHTML = infoBreed;
     })
-
     .catch(error => {
       elements.catInfo.innerHTML = '';
       elements.error.hidden = false; // handle error
